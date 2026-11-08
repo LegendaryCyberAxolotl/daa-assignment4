@@ -1,0 +1,447 @@
+{
+ "environment": {
+  "python": "3.10.5 (CPython)",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "machine": "AMD64",
+  "date": "2026-11-08 19:58:36"
+ },
+ "seed": 20261108,
+ "passed_rows": 46,
+ "total_rows": 46,
+ "batches": [
+  {
+   "name": "fresh process: lcs",
+   "requests": 317,
+   "seconds": 0.98,
+   "problem": ""
+  },
+  {
+   "name": "fresh process: kmp",
+   "requests": 526,
+   "seconds": 0.182,
+   "problem": ""
+  },
+  {
+   "name": "mixed process, two shuffled passes",
+   "requests": 1686,
+   "seconds": 1.804,
+   "problem": ""
+  }
+ ],
+ "rows": [
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-both-empty",
+   "expected": "exact {\"length\":0,\"sequence\":\"\"}",
+   "actual": "{\"length\":0,\"sequence\":\"\"}",
+   "checks": "Both strings empty",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-a-empty",
+   "expected": "exact {\"length\":0,\"sequence\":\"\"}",
+   "actual": "{\"length\":0,\"sequence\":\"\"}",
+   "checks": "Empty first string",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-b-empty",
+   "expected": "exact {\"length\":0,\"sequence\":\"\"}",
+   "actual": "{\"length\":0,\"sequence\":\"\"}",
+   "checks": "Empty second string",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-subsequence-not-substring",
+   "expected": "exact {\"length\":4,\"sequence\":\"team\"}",
+   "actual": "{\"length\":4,\"sequence\":\"team\"}",
+   "checks": "Subsequence is not contiguous (assignment example)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-repeated-chars",
+   "expected": "exact {\"length\":2,\"sequence\":\"aa\"}",
+   "actual": "{\"length\":2,\"sequence\":\"aa\"}",
+   "checks": "Repeated characters",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-alternative-optima",
+   "expected": "exact {\"length\":4}",
+   "actual": "{\"length\":4,\"sequence\":\"bcba\"}",
+   "checks": "Several different optimal sequences exist (any accepted)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-ab-ba",
+   "expected": "exact {\"length\":1}",
+   "actual": "{\"length\":1,\"sequence\":\"a\"}",
+   "checks": "Two optima of length 1 (a or b)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-identical",
+   "expected": "exact {\"length\":9,\"sequence\":\"algorithm\"}",
+   "actual": "{\"length\":9,\"sequence\":\"algorithm\"}",
+   "checks": "Identical strings",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-no-common",
+   "expected": "exact {\"length\":0,\"sequence\":\"\"}",
+   "actual": "{\"length\":0,\"sequence\":\"\"}",
+   "checks": "No common characters",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-case-space-punct",
+   "expected": "exact {\"length\":3,\"sequence\":\" ,!\"}",
+   "actual": "{\"length\":3,\"sequence\":\" ,!\"}",
+   "checks": "Case matters; spaces and punctuation are ordinary characters",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-single-char",
+   "expected": "exact {\"length\":1,\"sequence\":\"x\"}",
+   "actual": "{\"length\":1,\"sequence\":\"x\"}",
+   "checks": "One-character strings",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "tests/student/cases.json#lcs-one-char-vs-long",
+   "expected": "exact {\"length\":1,\"sequence\":\"z\"}",
+   "actual": "{\"length\":1,\"sequence\":\"z\"}",
+   "checks": "One char against a long string",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-empty-pattern",
+   "expected": "exact {\"positions\":[0,1,2,3]}",
+   "actual": "{\"positions\":[0,1,2,3]}",
+   "checks": "Empty pattern matches at every boundary 0..n",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-both-empty",
+   "expected": "exact {\"positions\":[0]}",
+   "actual": "{\"positions\":[0]}",
+   "checks": "Empty text and empty pattern: one boundary",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-empty-text",
+   "expected": "exact {\"positions\":[]}",
+   "actual": "{\"positions\":[]}",
+   "checks": "Empty text, non-empty pattern",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-pattern-longer",
+   "expected": "exact {\"positions\":[]}",
+   "actual": "{\"positions\":[]}",
+   "checks": "Pattern longer than text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-whole-text",
+   "expected": "exact {\"positions\":[0]}",
+   "actual": "{\"positions\":[0]}",
+   "checks": "Pattern equals the whole text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-overlap-aaaaa",
+   "expected": "exact {\"positions\":[0,1,2]}",
+   "actual": "{\"positions\":[0,1,2]}",
+   "checks": "Overlapping matches (assignment example)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-overlap-abababa",
+   "expected": "exact {\"positions\":[0,2,4]}",
+   "actual": "{\"positions\":[0,2,4]}",
+   "checks": "KMP must not lose starts 2 and 4 after a full match",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-case-and-punct",
+   "expected": "exact {\"positions\":[3,9]}",
+   "actual": "{\"positions\":[3,9]}",
+   "checks": "Case-sensitive; punctuation and spaces are ordinary characters",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-spaces",
+   "expected": "exact {\"positions\":[1,6]}",
+   "actual": "{\"positions\":[1,6]}",
+   "checks": "Pattern containing a space",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-no-match",
+   "expected": "exact {\"positions\":[]}",
+   "actual": "{\"positions\":[]}",
+   "checks": "No occurrence",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-match-at-end",
+   "expected": "exact {\"positions\":[2,4]}",
+   "actual": "{\"positions\":[2,4]}",
+   "checks": "The last valid window is checked",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-single-chars",
+   "expected": "exact {\"positions\":[0,1,2]}",
+   "actual": "{\"positions\":[0,1,2]}",
+   "checks": "One-character pattern",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-kmp-border-reuse",
+   "expected": "exact {\"positions\":[0,3]}",
+   "actual": "{\"positions\":[0,3]}",
+   "checks": "Border fallback after partial and full matches",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-rk-known-collision",
+   "expected": "exact {\"positions\":[0]}",
+   "actual": "{\"positions\":[0]}",
+   "checks": "ab and dj have the same hash 75; only ab matches (assignment example)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-rk-collision-pattern-second",
+   "expected": "exact {\"positions\":[2]}",
+   "actual": "{\"positions\":[2]}",
+   "checks": "Pattern dj collides with ab; only the window at 2 matches",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-rk-collisions-only",
+   "expected": "exact {\"positions\":[]}",
+   "actual": "{\"positions\":[]}",
+   "checks": "Every window collides with the pattern but none matches: must return []",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-rk-collision-in-middle",
+   "expected": "exact {\"positions\":[3]}",
+   "actual": "{\"positions\":[3]}",
+   "checks": "Collision candidate before the true match",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "tests/student/cases.json#search-high-low-ascii",
+   "expected": "exact {\"positions\":[2,8]}",
+   "actual": "{\"positions\":[2,8]}",
+   "checks": "High and low ASCII codes: rolling update goes negative before normalisation",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "generated by run_student_tests.py (seed 20261108)",
+   "expected": "every case matches the independent oracle",
+   "actual": "300/300 passed",
+   "checks": "lcs-random-small x300 (alphabets ab/abc/abcd, length 0-12); catches off-by-one, empty-input and tie-handling defects",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "generated by run_student_tests.py (seed 20261108, lcs-max-binary)",
+   "expected": "length=806, any common subsequence of that length",
+   "actual": "{\"length\":806,\"sequence\":\"abbbbbbbababaaabbabaaaabaabaaaababbbbbbba...",
+   "checks": "1000x1000 over a 2-letter alphabet (many optima)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "generated by run_student_tests.py (seed 20261108, lcs-max-identical)",
+   "expected": "exact {\"length\":1000,\"sequence\":\"babbaabbbbbababaaaabbabaaaabaa...",
+   "actual": "{\"length\":1000,\"sequence\":\"babbaabbbbbababaaaabbabaaaabaaababaaabab...",
+   "checks": "1000x1000 identical strings: length 1000",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "generated by run_student_tests.py (seed 20261108, lcs-max-disjoint)",
+   "expected": "exact {\"length\":0,\"sequence\":\"\"}",
+   "actual": "{\"length\":0,\"sequence\":\"\"}",
+   "checks": "1000x1000 with no common character: length 0",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "generated by run_student_tests.py (seed 20261108, lcs-max-ascii)",
+   "expected": "length=178, any common subsequence of that length",
+   "actual": "{\"length\":178,\"sequence\":\"K1R^ayMPx>/q%O:)M\\\\' ?2[;{{lvj;]4g|\\\"9Pze...",
+   "checks": "1000x1000 over all printable ASCII 32-126",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "lcs",
+   "source": "generated by run_student_tests.py (seed 20261108, lcs-1x1000)",
+   "expected": "exact {\"length\":1,\"sequence\":\"q\"}",
+   "actual": "{\"length\":1,\"sequence\":\"q\"}",
+   "checks": "Extreme shape 1 x 1000",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "generated by run_student_tests.py (seed 20261108)",
+   "expected": "every case matches the independent oracle",
+   "actual": "500/500 passed",
+   "checks": "search-random-small x500 (naive/kmp/rk vs str.find loop); catches off-by-one, empty-input and tie-handling defects",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "generated by run_student_tests.py (seed 20261108, search-3000-random)",
+   "expected": "positions=[1234] (z=1)",
+   "actual": "{\"positions\":[1234]}",
+   "checks": "n=3000 random text, pattern copied from the text (occurs at least once)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "generated by run_student_tests.py (seed 20261108, search-3000-a-vs-a)",
+   "expected": "exact {\"positions\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17...",
+   "actual": "{\"positions\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,...",
+   "checks": "n=3000 all 'a', m=1500: 1501 overlapping matches",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "generated by run_student_tests.py (seed 20261108, search-3000-a-vs-ab)",
+   "expected": "exact {\"positions\":[]}",
+   "actual": "{\"positions\":[]}",
+   "checks": "n=3000 all 'a', pattern a^299 b: no match, worst case for naive",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "generated by run_student_tests.py (seed 20261108, search-3000-periodic)",
+   "expected": "exact {\"positions\":[0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,...",
+   "actual": "{\"positions\":[0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,3...",
+   "checks": "n=3000 text (ab)^1500, pattern (ab)^50",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "generated by run_student_tests.py (seed 20261108, search-3000-rk-collisions)",
+   "expected": "exact {\"positions\":[]}",
+   "actual": "{\"positions\":[]}",
+   "checks": "text (dj)^1500, pattern ab: 1500 hash candidates, all must be rejected",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "naive/kmp/rk",
+   "source": "generated by run_student_tests.py (seed 20261108, search-3000-empty-pattern)",
+   "expected": "exact {\"positions\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17...",
+   "actual": "{\"positions\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,...",
+   "checks": "n=3000 with empty pattern: 3001 positions",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "kmp",
+   "source": "generated by run_student_tests.py (seed 20261108, kmp-200000)",
+   "expected": "exact {\"positions\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17...",
+   "actual": "{\"positions\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,...",
+   "checks": "KMP at the maximum size: n=200000, m=100000",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "kmp",
+   "source": "generated by run_student_tests.py (seed 20261108, kmp-200000-random)",
+   "expected": "positions=[777, 16221, 87421, 112609, 121544] (z=5)",
+   "actual": "{\"positions\":[777,16221,87421,112609,121544]}",
+   "checks": "KMP n=200000 random binary text, 17-char pattern from the text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "command": "all",
+   "source": "generated by run_student_tests.py (all cases shuffled, sent twice to one process)",
+   "expected": "every answer valid in both passes; no state leaks between different tasks or repeated requests",
+   "actual": "1686/1686 answers valid",
+   "checks": "Stale state between requests, wrong task dispatch, crashes after earlier requests",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}
